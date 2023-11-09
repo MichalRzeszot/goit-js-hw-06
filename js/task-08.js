@@ -3,15 +3,18 @@ const loginForm = document.querySelector(".login-form");
 loginForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const formData = new FormData(loginForm);
-  const formObject = {};
+  const formElements = loginForm.elements;
+  const formData = {};
 
-  formData.forEach((value, key) => {
-    formObject[key] = value;
-  });
+  for (let i = 0; i < formElements.length; i++) {
+    const element = formElements[i];
+    if (element.type !== "submit") {
+      formData[element.name] = element.value;
+    }
+  }
 
-  if (formObject.email && formObject.password) {
-    console.log(formObject);
+  if (formData.email && formData.password) {
+    console.log(formData);
 
     loginForm.reset();
   } else {
