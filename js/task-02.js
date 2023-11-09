@@ -9,12 +9,15 @@ const ingredients = [
   "Condiments",
 ];
 
+const ul = document.getElementById("ingredients");
+
+const elements = [];
+
 ingredients.forEach((ingredient) => {
-  const liElement = document.createElement("li");
-
-  liElement.textContent = ingredient;
-
-  liElement.classList.add("item");
-
-  ingredientsList.appendChild(liElement);
+  const li = document.createElement("li");
+  li.textContent = ingredient;
+  li.classList.add("item");
+  elements.push(li);
 });
+
+ul.append(...elements);
